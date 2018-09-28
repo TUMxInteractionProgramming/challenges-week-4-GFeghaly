@@ -6,7 +6,7 @@ console.log("App is alive");
  * @param channelName Text which is set
  */
 var currentChannel;
-var currentLocation ={longitude:33.873092,latitude:35.511176,what3words:"http://w3w.co/shack.slimmer.certainty"};
+var currentLocation ={createdBy:"shack.slimmer.certainty",latitude:35.511176,longitude:33.873092};
 
 function switchChannel(channelName) {
     //Log the channel switch
@@ -28,7 +28,7 @@ function switchChannel(channelName) {
     document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/'+channelName.createdBy+'"target="_blank"><strong>'+channelName.createdBy+'</strong></a>';
 
     /* #6 #liking channels on #click */
-    //$('#channel-star').toggleClass((channelName.starred)?"fas fa":"far fa");
+    $('#channel-star').toggleClass((channelName.starred)?"fas far":"far fas");
 
     /* #6 #highlight the selected #channel.
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
@@ -76,7 +76,7 @@ this.longitude=currentLocation.longitude;
 this.createdOn=Date.now();
 this.expiresOn=Date.now()+ 9e5;
 this.own=true;*/
-this.createdBy=createdBy  ;  
+this.createdBy=createdBy;  
 this.latitude=latitude;
 this.longitude=longitude;
 this.createdOn=createdOn;
@@ -89,8 +89,8 @@ this.text=text;
 //create new message object form 
 function sendMessage(){
 
-    //var writtenmessage=$("input[name=inputmessage]").val();
-    var ownmessage=new Message("Hello Chatter");
+    var writtenmessage=$("input[name=inputmessage]").val();
+    var ownmessage=new Message(currentLocation.createdBy,currentLocation.latitude,currentLocation.longitude,Date.now(),Math.round(15,Date.now()+9e5),true,writtenmessage);
     console.log("newmessage",ownmessage);
    $("<div class='message own'>").html(createMessageElement(ownmessage)).appendTo("#messages");
 }
@@ -98,7 +98,7 @@ function sendMessage(){
 //function, which takes a message object and returns a string representation of an HTML message element
 function createMessageElement(objectmessage){
 
-return '<h3><a href="http://w3w.co/'+objectmessage.createdBy+'"target="_blank"><strong>'+objectmessage.createdBy+'</strong></a>'+objectmessage.createdOn+'<em>:expireIn:min. left</em></h3><p>'+ objectmessage.text +'</p><button>+5 min.</button>';
+return '<h3><a href="http://w3w.co/'+objectmessage.createdBy+'"target="_blank"><strong>'+objectmessage.createdBy+'</strong></a>'+objectmessage.createdOn+'<em>'+objectmessage.expiresOn+'min. left</em></h3><p>'+ objectmessage.text +'</p><button>+5 min.</button>';
 
    
 }
