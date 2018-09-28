@@ -47,7 +47,7 @@ button, strong {
     left: 40%;
 }
 
-#messages {
+#messages,#message-input {
     /* #5 #messages are now wrapped in a div to #scroll properly */
     position: absolute;
     width: 100%;
@@ -275,4 +275,15 @@ li.selected {
 
  .channel-meta{
      font-size:24px;
+ }
+
+
+ #message-input {
+    /* #5 #messages are now wrapped in a div to #scroll properly */
+    display: flex;
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    font-size:medium;
+    align-items: flex-end;
  }

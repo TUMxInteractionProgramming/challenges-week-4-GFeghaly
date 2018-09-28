@@ -90,7 +90,7 @@ this.text=text;
 function sendMessage(){
 
     var writtenmessage=$("input[name=inputmessage]").val();
-    var ownmessage=new Message(currentLocation.createdBy,currentLocation.latitude,currentLocation.longitude,Date.now(),Math.round(15,Date.now()+9e5),true,writtenmessage);
+    var ownmessage=new Message(currentLocation.createdBy,currentLocation.latitude,currentLocation.longitude,Date().toString(),Math.round(15,Date.now()+9e5),true,writtenmessage);
     console.log("newmessage",ownmessage);
    $("<div class='message own'>").html(createMessageElement(ownmessage)).appendTo("#messages");
 }

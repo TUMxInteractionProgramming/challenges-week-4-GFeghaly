@@ -173,9 +173,9 @@
         <button id="emojis-button" onclick="toggleEmojis()"><img src="http://ip.lfe.mw.tum.de/sections/smile-o.png" alt="Smiley"></button>
         <div id="emojis">&#x1F601; &#x1F602; &#x1F603; &#x1F604; &#x1F605; &#x1F606; &#x1F607;</div>
        <div>
-        <input type="text" name="inputmessage" value="Message..." maxlength="140"/>
+        <input id="message-input" type="text"  name="inputmessage" value="Message..." maxlength="140" style="position:inherit;font-size:inherit;border:none"/>
        </div>
-        <button id="sendMessage" style="position:absolute;right:18px;" onclick="sendMessage()"><i class="fas fa-arrow-right"></i></button>
+        <button id="sendMessage" style="position:absolute;right:18px;" onclick="sendMessage();document.getElementById('message-input').value = ''"><i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 
